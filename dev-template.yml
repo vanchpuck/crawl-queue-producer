@@ -37,6 +37,14 @@ Resources:
                 Action:
                   - sqs:SendMessage
                 Resource: "arn:aws:sqs:us-east-2:848625190772:CrawlQueue"
+        - PolicyName: allowS3
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - s3:GetObject
+                  Resource: "arn:aws:s3:::org.gear-scanner.data/*"
   CrawlQueueProduccerDevFunction:
     Type: AWS::Serverless::Function
     Properties:
